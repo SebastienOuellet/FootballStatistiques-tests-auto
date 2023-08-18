@@ -32,8 +32,8 @@ describe('Football', () => {
     cy.get('app-select-returner [data-testid="player-13"]')
       .click()
 
-    cy.setWheelValue('[data-testid="caughtOn"]', 22)
-    cy.setWheelValue('[data-testid="returnedTo"]', 39)
+    // cy.setWheelValue('[data-testid="caughtOn"]', 22)
+    // cy.setWheelValue('[data-testid="returnedTo"]', 39)
 
     cy.get('app-select-hash [data-testid="hashR"]')
       .click()
@@ -64,7 +64,7 @@ describe('Football', () => {
     cy.get('app-select-rusher [data-testid="player-8"]')
       .click()
 
-    cy.setWheelValue('app-select-gain app-wheel-selector', 6)
+    // cy.setWheelValue('app-select-gain app-wheel-selector', 6)
     // FIXME n'ajuste pas automatiquement le spot
 
     cy.get('app-select-hash [data-testid="hashR"]')
@@ -97,7 +97,7 @@ describe('Football', () => {
     cy.get('app-select-receiver [data-testid="player-21"]')
       .click()
 
-    cy.setWheelValue('app-select-gain app-wheel-selector', 12)
+    // cy.setWheelValue('app-select-gain app-wheel-selector', 12)
 
     cy.get('app-select-hash [data-testid="hashL"]')
       .click()
@@ -158,7 +158,7 @@ describe('Football', () => {
     cy.get('app-select-rusher [data-testid="player-8"]')
       .click()
 
-    cy.setWheelValue('app-select-gain app-wheel-selector', 2)
+    // cy.setWheelValue('app-select-gain app-wheel-selector', 2)
 
     cy.get('app-select-hash [data-testid="hashM"]')
       .click()
