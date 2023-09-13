@@ -10,11 +10,14 @@
     "cy:info": "cypress info",
     "lint": "eslint ./cypress/",
     "lint:fix": "eslint ./cypress/ --fix",
-    "test": "npm run cy:run"
+    "test": "npm run cy:run",
+    "playwright": "npx playwright test --ui",
+    "playwright:examples": "npx playwright tests-examples --ui"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@playwright/test": "^1.37.1",
     "cypress": "^12.17.4"
   }
 }

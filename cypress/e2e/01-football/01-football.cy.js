@@ -32,8 +32,8 @@ describe('Football', () => {
     cy.get('app-select-returner [data-testid="player-13"]')
       .click()
 
-    // cy.setWheelValue('[data-testid="caughtOn"]', 22)
-    // cy.setWheelValue('[data-testid="returnedTo"]', 39)
+    cy.setWheelValue('[data-testid="caughtOn"]', 22)
+    cy.setWheelValue('[data-testid="returnedTo"]', 39)
 
     cy.get('app-select-hash [data-testid="hashR"]')
       .click()
