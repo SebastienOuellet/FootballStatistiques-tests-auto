@@ -11,13 +11,14 @@
     "lint": "eslint ./cypress/",
     "lint:fix": "eslint ./cypress/ --fix",
     "test": "npm run cy:run",
-    "playwright": "npx playwright test --ui",
+    "playwright:install": "npx playwright install",
+    "playwright:ui": "npx playwright test --ui",
     "playwright:examples": "npx playwright tests-examples --ui"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.37.1",
+    "@playwright/test": "^1.38.0",
     "cypress": "^12.17.4"
   }
 }
