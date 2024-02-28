@@ -1,10 +1,10 @@
 import {test, expect, Page} from '@playwright/test';
 
 test('Grasset_PlaylistData_2023-06-08', async ({ page }) => {
-  await page.goto('http://localhost:4200/');
+  await page.goto('http://staging.sportsstatistiques.techqueb.com/');
 
   // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/FootballStats/);
+  await expect(page).toHaveTitle(/StatsFootball/);
   await page.click('[data-testid="game-list"] .demo');
 
   // 1 - KickOff

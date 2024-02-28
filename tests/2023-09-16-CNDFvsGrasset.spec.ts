@@ -1,11 +1,46 @@
 import {test, expect, Page} from '@playwright/test';
 
 test('Quart 1', async ({ page }) => {
-  await page.goto('http://localhost:4200/');
+  // 'http://staging.sportsstatistiques.techqueb.com/'
+  await page.goto('https://staging.sportsstatistiques.techqueb.com/');
 
-  await expect(page).toHaveTitle(/FootballStats/);
+  await expect(page).toHaveTitle(/StatsFootball/);
 
   await page.getByTestId('demoGame').click();
+
+
+  // await page.evaluate(() => {
+  //   window.chargerDonneesLineup({
+  //     home: {
+  //       nom: 'hometeam',
+  //       abrev: 'HT',
+  //       positions: {
+  //         qb: [1],
+  //         rb: [2],
+  //         wr: [3],
+  //         ol: [4],
+  //         dl: [5],
+  //         lb: [6],
+  //         db: [7],
+  //         k: [8],
+  //       }
+  //     },
+  //     away: {
+  //       nom: 'awayteam',
+  //       abrev: 'AT',
+  //       positions: {
+  //         qb: [11],
+  //         rb: [12],
+  //         wr: [13],
+  //         ol: [14],
+  //         dl: [15],
+  //         lb: [16],
+  //         db: [17],
+  //         k: [18],
+  //       }
+  //     }
+  //   })
+  // })
 
   await page.getByTestId('homeKickoff').click();
   await page.getByTestId('kicker-player-12').click();

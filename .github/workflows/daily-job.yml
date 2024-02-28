@@ -1,0 +1,18 @@
+name: Exécution quotidienne
+
+on:
+  push:
+  schedule:
+    - cron: '0 3 * * *'  # Exécuté à 3 h du matin tous les jours
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Exécute une commande
+        run: |
+          echo "Ceci est une action exécutée tous les jours!"
