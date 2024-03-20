@@ -3,6 +3,8 @@ import { base } from '../../commands/base';
 import {getDump} from "../../commands/getDump";
 import {finishTagging} from "../../commands/finishTagging";
 import {savePenalty} from "../../commands/savePenalty";
+import {waitForAngular} from "../../commands/waitForAngular";
+import {login} from "../../commands/login";
 
 let page: Page
 
@@ -11,6 +13,11 @@ test.describe('Run', () => {
     page = await browser.newPage();
 
     await page.goto(base.url);
+    await waitForAngular(page)
+
+    if (await page.locator('app-unauthenticated').isVisible()) {
+      await login(page)
+    }
 
     await page.getByText('Demo Game').click();
     await page.getByTestId('homeReceiveKickoff').click();

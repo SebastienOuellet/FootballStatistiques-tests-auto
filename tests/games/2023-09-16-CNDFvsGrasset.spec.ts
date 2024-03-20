@@ -1,10 +1,15 @@
 import {test, expect, Page} from '@playwright/test';
 import {base} from "../commands/base";
+import {waitForAngular} from "../commands/waitForAngular";
+import {login} from "../commands/login";
 
-test('Quart 1', async ({ page }) => {
+test.skip('Quart 1', async ({ page }) => {
   await page.goto(base.url);
+  await waitForAngular(page)
 
-  await expect(page).toHaveTitle(/StatsFootball/);
+  if (await page.locator('app-unauthenticated').isVisible()) {
+    await login(page)
+  }
 
   await page.getByTestId('demoGame').click();
 

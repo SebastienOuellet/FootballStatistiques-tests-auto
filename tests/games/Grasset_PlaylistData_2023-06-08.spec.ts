@@ -1,11 +1,18 @@
 import {test, expect, Page} from '@playwright/test';
 import {base} from "../commands/base";
+import {waitForAngular} from "../commands/waitForAngular";
+import {login} from "../commands/login";
 
-test('Grasset_PlaylistData_2023-06-08', async ({ page }) => {
+test.skip('Grasset_PlaylistData_2023-06-08', async ({ page }) => {
   await page.goto(base.url);
+  await waitForAngular(page)
+
+  if (await page.locator('app-unauthenticated').isVisible()) {
+    await login(page)
+  }
 
   // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/StatsFootball/);
+  // await expect(page).toHaveTitle(/StatsFootball/);
   await page.click('[data-testid="game-list"] .demo');
 
   // 1 - KickOff

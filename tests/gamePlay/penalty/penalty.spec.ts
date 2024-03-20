@@ -4,6 +4,8 @@ import {getDump} from "../../commands/getDump";
 import {savePenalty} from "../../commands/savePenalty";
 import {finishTagging} from "../../commands/finishTagging";
 import {resume} from "../../commands/resume";
+import {waitForAngular} from "../../commands/waitForAngular";
+import {login} from "../../commands/login";
 
 let page: Page
 
@@ -12,6 +14,11 @@ test.describe('Penalty', () => {
     page = await browser.newPage();
 
     await page.goto(base.url);
+    await waitForAngular(page)
+
+    if (await page.locator('app-unauthenticated').isVisible()) {
+      await login(page)
+    }
 
     await page.screenshot({ animations: 'disabled' });
 

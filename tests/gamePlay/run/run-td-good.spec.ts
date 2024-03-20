@@ -1,9 +1,16 @@
 import { test, expect } from '@playwright/test';
 import { base } from '../../commands/base';
+import {waitForAngular} from "../../commands/waitForAngular";
+import {login} from "../../commands/login";
 
 test('test', async ({ page }) => {
-  // Recording...
   await page.goto(base.url);
+  await waitForAngular(page)
+
+  if (await page.locator('app-unauthenticated').isVisible()) {
+    await login(page)
+  }
+
   await page.getByTestId('demoGame').click();
   await page.getByTestId('homeKickoff').click();
   await page.getByTestId('kicker-player-12').click();

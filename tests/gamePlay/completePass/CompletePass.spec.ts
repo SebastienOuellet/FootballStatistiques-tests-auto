@@ -2,6 +2,8 @@ import { test, expect, Page } from '@playwright/test';
 import { base } from '../../commands/base';
 import { wait } from '../../commands/wait';
 import {getDump} from "../../commands/getDump";
+import {waitForAngular} from "../../commands/waitForAngular";
+import {login} from "../../commands/login";
 
 test.use({
   viewport: {
@@ -17,6 +19,11 @@ test.describe('Complete pass', () => {
     page = await browser.newPage();
 
     await page.goto(base.url);
+    await waitForAngular(page)
+
+    if (await page.locator('app-unauthenticated').isVisible()) {
+      await login(page)
+    }
 
     await page.getByText('Demo Game').click();
     await page.getByTestId('homeReceiveKickoff').click();

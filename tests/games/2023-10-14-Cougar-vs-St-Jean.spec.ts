@@ -1,17 +1,8 @@
 import { test, expect } from '@playwright/test';
 import {finishTagging} from "../commands/finishTagging";
 import {waitForAngular} from "../commands/waitForAngular";
-
-
-async function login(page) {
-  await page.goto('https://staging.sportsstatistiques.techqueb.com/');
-  await page.goto('https://staging.sportsstatistiques.techqueb.com/login');
-  await page.getByPlaceholder('name@mail.com').click();
-  await page.getByPlaceholder('name@mail.com').fill('dominic.marcotte@gmail.com');
-  await page.getByPlaceholder('Password').click();
-  await page.getByPlaceholder('Password').fill('bnc1fay-WZU0gqw2zyv');
-  await page.getByRole('button', {name: 'Login'}).click();
-}
+import {login} from "../commands/login";
+import {base} from "../commands/base";
 
 async function initGame(page) {
   await page.getByTestId('demoGame').click();
@@ -52,7 +43,13 @@ async function initGame(page) {
 test('2023-10-14 Cougar vs St-Jean', async ({ page }) => {
   test.setTimeout(120 * 1000 * 100);
 
-  await login(page);
+  await page.goto(base.url);
+  await waitForAngular(page)
+
+  if (await page.locator('app-unauthenticated').isVisible()) {
+    await login(page)
+  }
+
   await initGame(page);
 
   // #1
