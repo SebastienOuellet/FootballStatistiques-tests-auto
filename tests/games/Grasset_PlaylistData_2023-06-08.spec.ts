@@ -1,7 +1,8 @@
 import {test, expect, Page} from '@playwright/test';
+import {base} from "../commands/base";
 
 test('Grasset_PlaylistData_2023-06-08', async ({ page }) => {
-  await page.goto('http://staging.sportsstatistiques.techqueb.com/');
+  await page.goto(base.url);
 
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/StatsFootball/);

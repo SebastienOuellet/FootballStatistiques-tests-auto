@@ -14,12 +14,16 @@
     "playwright:install": "npx playwright install",
     "playwright:ui": "npx playwright test --ui",
     "playwright:codegen": "npx playwright codegen http://localhost:4200",
-    "playwright:examples": "npx playwright tests-examples --ui"
+    "playwright:codegen2": "npx playwright codegen",
+    "playwright:examples": "npx playwright tests-examples --ui",
+    "extraireLineUp": "tsc --module nodenext --target esnext tests/pre-test/extraireLineUp.ts && node tests/pre-test/extraireLineUp.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.39.0",
-    "cypress": "^12.17.4"
+    "@playwright/test": "^1.42.1",
+    "cypress": "^12.17.4",
+    "dotenv": "^16.3.1",
+    "typescript": "^5.4.2"
   }
 }
